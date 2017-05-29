@@ -6,8 +6,17 @@
 % The first rifleman to hit the target gets 2002 dollars. 
 % No 1 shoots first, B second, and C third, after which the cycle repeats again with A, 
 % until one of the riflemen hits the target. 
-% Each hits the target with probability 0.5. 
+% Each hits the target with probability 0.1, 0.2, 0.3. 
 % What is rifleman A's expected winnings in dollars? 
+
+Explain: Probability for winning of each person is calculated as follow
+NameRound   Winning probability
+A1          0.1
+B1          (1-0.1)*0.2
+C1          (1-0.1)*(1-0.2)*0.3 
+A2          (1-0.1)*(1-0.2)*(1-0.3)*0.1
+...
+
 
 %% Input value
 clear all 
