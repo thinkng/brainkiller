@@ -1,0 +1,43 @@
+%% 0. Classic Russian Roullete 
+
+(to be written)
+
+%%  1. Hitting target: Three riflemen A, B, and C take turns shooting at a target. 
+% The first rifleman to hit the target gets 2002 dollars. 
+% No 1 shoots first, B second, and C third, after which the cycle repeats again with A, 
+% until one of the riflemen hits the target. 
+% Each hits the target with probability 0.5. 
+% What is rifleman A's expected winnings in dollars? 
+
+%% Input value
+clear all 
+n=3;
+hit_prob = [0.5 0.5 0.5]; %n value
+prize = 2002;
+accuracy = 0.9999;
+
+%% Run for individual winning prob
+sum_prob = 0;
+miss_prob = 1;
+count = 1;
+p = [0 0 0];
+run = true;
+while (run == true)
+    p(count) = p(count)+ miss_prob*hit_prob(count);
+    miss_prob = miss_prob*(1-hit_prob(count));
+    sum_prob = sum_prob + p(count);    
+    if count==3
+        if (sum_prob>accuracy)
+            run=false;  
+        else
+            count=0;
+            sum_prob =0;
+        end
+    end
+    count=count+1;
+end
+for i=1:n
+    expected_winning(i)=prize*p(i);
+end
+
+%p = [0.571 0.286 0.143]
